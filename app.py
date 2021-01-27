@@ -114,7 +114,7 @@ def create_app(first_time=False):
     api.add_resource(AllMoviesViewset, '/allmovies')
 
 
-    return app, api
+    return app
 
 
 if __name__ == '__main__':
@@ -126,6 +126,4 @@ if __name__ == '__main__':
         run_first_time = True
 
     app = create_app(run_first_time)
-
-
     app.run(host='0.0.0.0',port=8000, debug=True)
