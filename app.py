@@ -124,4 +124,4 @@ if __name__ == '__main__':
     ## attaching the url to view
     api.add_resource(MovieViewset, '/movie/<int:movie_id>')
     api.add_resource(AllMoviesViewset, '/allmovies')
-    app.run(port=8000, debug=True)
+    app.run(host='0.0.0.0',port=8000, debug=True)
