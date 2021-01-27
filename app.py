@@ -20,7 +20,7 @@ class ConfigClass(object):
     USER_REQUIRE_RETYPE_PASSWORD = False    # Simplify register form
 
 
-def create_app(first_time=False):
+def create_app(first_time=False, *args, **kwargs):
 
     app = Flask(__name__)
     app.config.from_object(__name__+'.ConfigClass')
@@ -126,4 +126,5 @@ if __name__ == '__main__':
         run_first_time = True
 
     app = create_app(run_first_time)
-    app.run(host='0.0.0.0',port=8000, debug=True)
+    app.run(host='0.0.0.0',port=8000)
+    #app.run()
