@@ -107,11 +107,17 @@ def create_app_api(first_time=False):
         except exc.IntegrityError:
             pass
 
+    ## attaching the url to view
+    from views import MovieViewset, AllMoviesViewset
+
+    api.add_resource(MovieViewset, '/movie/<int:movie_id>')
+    api.add_resource(AllMoviesViewset, '/allmovies')
+
+
     return app, api
 
 
 if __name__ == '__main__':
-    from views import MovieViewset, AllMoviesViewset
 
     ## checking for sys args
     sys_args = sys.argv
@@ -119,9 +125,7 @@ if __name__ == '__main__':
     if (len(sys_args) > 1) and (sys_args[1]=='first_time'):
         run_first_time = True
 
-    app, api = create_app_api(run_first_time)
+    app = create_app(run_first_time)
 
-    ## attaching the url to view
-    api.add_resource(MovieViewset, '/movie/<int:movie_id>')
-    api.add_resource(AllMoviesViewset, '/allmovies')
+
     app.run(host='0.0.0.0',port=8000, debug=True)
